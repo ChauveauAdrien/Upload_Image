@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upload Image</title>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script async src="./uploadPreview/uploadPreview.js"></script>
 </head>
 <body>
     <div class="upload-wrapper">
         <h1>Veuillez choisir une image :</h1>
         <img id="imgPreview">
-        <input type="file">
-        <button><ion-icon name="cloud-upload-outline"></ion-icon>UPLOAD</button>
+        <form action="" method="post" enctype="multipart/form-data">
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <button type="submit"><ion-icon name="cloud-upload-outline"></ion-icon>UPLOAD</button>
+        </form>
     </div>
 
 

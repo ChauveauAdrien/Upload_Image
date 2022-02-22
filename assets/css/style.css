@@ -12,6 +12,7 @@
 }
 #imgPreview{
     height: auto;
+    width: 100px
 }
 .upload-wrapper button{
     width: 60%;
