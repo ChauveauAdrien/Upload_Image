@@ -5,10 +5,26 @@ if (isset($_FILES['photo'])
 {
     $tmp = $_FILES['photo']['tmp_name'];
     $filename = $_FILES['photo']['name'];
+    $fileNameArray = explode(".", $filename);  
+    $finalName = $fileNameArray[0].uniqid().'.'.$fileNameArray[1];
     $destination = 'assets/img/';
-    if (move_uploaded_file($tmp, $destination . $filename)) {
-        echo 'téléchargement réussi';
+    $type = $_FILES['photo']['type'];
+    $size = $_FILES['photo']['size'];
+    if ($type == 'image/jpg' || $type == 'image/jpeg' || $type == 'image/png' && $size < 1000000) {
+        if (move_uploaded_file($tmp, $destination . $finalName)) {
+            echo 'téléchargement réussi';
+        }
+    }else {
+        echo '- Format incorrect, veuillez choisir une image au format jpg ou jpeg';
     }
+    if ($type == 'image/jpg' || $type == 'image/jpeg' || $type == 'image/png' && $size < 1000000) {
+        if (move_uploaded_file($tmp, $destination . $finalName)) {
+            echo 'téléchargement réussi';
+        }
+    }else {
+        echo '<br>- Image trop lourde, veuillez choisir une image inférieur à 1 MO';
+    }
+    
 }
 
 ?>
