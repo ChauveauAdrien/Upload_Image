@@ -1,3 +1,24 @@
+<?php 
+
+if (isset($_FILES['photo'])
+    && $_FILES['photo']['error'] == 0)
+{
+    $tmp = $_FILES['photo']['tmp_name'];
+    $filename = $_FILES['photo']['name'];
+    $destination = 'assets/img/';
+    if (move_uploaded_file($tmp, $destination . $filename)) {
+        echo 'téléchargement réussi';
+    }
+}
+
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +34,7 @@
         <h1>Veuillez choisir une image :</h1>
         <img id="imgPreview">
         <form action="" method="post" enctype="multipart/form-data">
-            <input type="file" name="fileToUpload" id="fileToUpload">
+            <input type="file" name="photo" id="fileToUpload">
             <button type="submit"><ion-icon name="cloud-upload-outline"></ion-icon>UPLOAD</button>
         </form>
     </div>
